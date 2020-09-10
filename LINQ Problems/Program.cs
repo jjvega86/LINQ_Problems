@@ -13,21 +13,21 @@ namespace LINQ_Problems
         {
             // Problem 1: Using LINQ, write a function that returns all words that contain the substring “th” from a list
 
-            //List<string> words = new List<string>() { "the", "bike", "this",  "it", "tenth", "mathematics" };
-            //var wordsWithTh = words.Where(w => w.Contains("th"));
-            //foreach (var word in wordsWithTh)
-            //{
-            //    Console.WriteLine(word);
-            //}
+            List<string> words = new List<string>() { "the", "bike", "this", "it", "tenth", "mathematics" };
+            var wordsWithTh = words.Where(w => w.Contains("th"));
+            foreach (var word in wordsWithTh)
+            {
+                Console.WriteLine(word);
+            }
 
             // Problem 2: Using LINQ, write a function that takes in a list of strings and returns a copy of the list without duplicates
 
-            //List<string> names = new List<string>() { "Mike", "Brad", "Nevin", "Zack", "Mike" };
-            //var listWithoutDuplicates = names.Distinct().ToList();
-            //foreach (var name in listWithoutDuplicates)
-            //{
-            //    Console.WriteLine(name);
-            //}
+            List<string> names = new List<string>() { "Mike", "Brad", "Nevin", "Zack", "Mike" };
+            var listWithoutDuplicates = names.Distinct().ToList();
+            foreach (var name in listWithoutDuplicates)
+            {
+                Console.WriteLine(name);
+            }
 
             // Problem 3: Using LINQ, write a function that calculates the class grade average after dropping the lowest grade for each student. 
             // The function should take in a list of strings of grades (e.g., one string might be "90,100,82,89,55"), 
@@ -53,7 +53,51 @@ namespace LINQ_Problems
             var finalTotal = cumulativeTotal/classGrades.Count; // find average of all averaged grades divided by total strings in original list
 
 
+
+            // Problem 4: Write a function that takes in a string of letters (i.e. “Terrill”) 
+            // and returns an alphabetically ordered string corresponding to the letter frequency (i.e. "E1I1L2R2T1")
+
+            string letters = "Terrill";
+            var finalOutput = new StringBuilder();
+            string loweredLetters = letters.ToUpper();
+            char[] a = loweredLetters.ToCharArray();
+            Array.Sort(a);
+
+            
+            foreach (char c in a)
+            {
+                if (a != null)
+                {
+                    
+
+                    if(a.Count(letter => letter == c) == 0)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        finalOutput.Append(c);
+                        finalOutput.Append(a.Count(letter => letter == c));
+                        char[] temp = a.Where(letter => letter != c).ToArray();
+                        a = temp;
+                    }
+                    
+                    
+
+                }
+                else
+                {
+                        
+                    break;
+                }
+            }
+
+            Console.WriteLine(finalOutput);
+
             Console.ReadLine();
+
+
+
 
 
         }
